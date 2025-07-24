@@ -8,7 +8,7 @@ interface BackgroundEffectsProps {
 }
 
 export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ section = 'home' }) => {
-  const { matrixCode } = useMatrixAnimation();
+  const { matrixCode, isVisible } = useMatrixAnimation();
   const { floatingElements } = useFloatingElements();
 
   if (section === 'home') {
@@ -16,13 +16,12 @@ export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({ section = 
       <>
         {/* Matrix animation only for home section */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          {matrixCode.map((code: MatrixCode) => (
+          {isVisible && matrixCode.map((code: MatrixCode) => (
             <div
               key={code.id}
-              className="matrix-rain animate-matrix absolute text-green-400/20"
+              className="matrix-rain animate-matrix absolute text-green-400/3"
               style={{
                 left: `${code.position.x}%`,
-                top: `${code.position.y}%`,
                 animationDelay: `${code.animationDelay}s`,
                 fontSize: `${Math.random() * 8 + 10}px`
               }}

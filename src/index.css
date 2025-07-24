@@ -10,34 +10,24 @@ All colors MUST be HSL.
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -75,16 +65,20 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
-    cursor: default; /* Fixed to default cursor */
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    cursor: default;
+    overflow-x: hidden;
+  }
+
+  html {
+    overflow-x: hidden;
   }
 }
 
@@ -160,7 +154,13 @@ All colors MUST be HSL.
 @keyframes matrix {
   0% {
     transform: translateY(-100vh);
-    opacity: 1;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
   }
   100% {
     transform: translateY(100vh);
@@ -209,28 +209,25 @@ All colors MUST be HSL.
 
 .animate-matrix {
   animation: matrix 4s linear infinite;
+  will-change: transform, opacity;
 }
 
 .animate-typing {
   animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
 }
 
-/* Remove cursor effects */
 body * {
-  cursor: default !important; /* Fixed to default cursor */
+  cursor: default !important;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Enhanced hover effects */
 .group:hover .group-hover\:glow {
   filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
 }
 
-/* Matrix code rain effect */
 .matrix-rain {
   position: absolute;
   color: #0f0;
@@ -239,9 +236,9 @@ html {
   white-space: nowrap;
   pointer-events: none;
   z-index: 1;
+  top: 0;
 }
 
-/* 3D transform effects */
 .transform-3d {
   transform-style: preserve-3d;
   perspective: 1000px;
@@ -255,7 +252,6 @@ html {
   transform: rotateX(12deg);
 }
 
-/* Glitch effect */
 @keyframes glitch {
   0% {
     transform: translate(0);
@@ -281,11 +277,16 @@ html {
   animation: glitch 0.3s infinite;
 }
 
-/* Shaking animation for name */
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
-  20%, 40%, 60%, 80% { transform: translateX(2px); }
+  0%, 100% { 
+    transform: translateX(0); 
+  }
+  10%, 30%, 50%, 70%, 90% { 
+    transform: translateX(-2px); 
+  }
+  20%, 40%, 60%, 80% { 
+    transform: translateX(2px); 
+  }
 }
 
 .animate-shake {
@@ -296,7 +297,6 @@ html {
   animation: shake 0.5s ease-in-out;
 }
 
-/* Rain animation for technologies */
 @keyframes rain {
   0% {
     transform: translateY(-100vh) rotate(0deg);
@@ -319,4 +319,17 @@ html {
 
 .animate-rain {
   animation: rain 4s linear infinite;
+}
+
+.terminal-container {
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.terminal-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
