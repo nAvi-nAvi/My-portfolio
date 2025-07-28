@@ -141,6 +141,12 @@ export const PROJECTS: Project[] = [
     description: 'Train ticket booking application development and Google Ad Manager module integration.',
     tech: 'React.js, Node.js, Payment Integration, Ad Manager',
     gradient: 'from-yellow-500 to-orange-500'
+  },
+  {
+    title: 'Pull-Request Management System',
+    description: 'Automated pull-request management system with code quality checks, automated testing, and deployment.', 
+    tech: 'Node.js, CI/CD, Python, Open AI, GitHub Actions',
+    gradient: 'from-gray-500 to-blue-500'
   }
 ];
 
