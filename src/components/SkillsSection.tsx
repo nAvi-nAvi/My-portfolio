@@ -19,11 +19,11 @@ export const SkillsSection: React.FC = () => {
             >
               <CardHeader>
                 <skill.icon className="w-6 h-6 text-blue-300 mb-2" />
-                <CardTitle className="text-white">{skill.title}</CardTitle> {/* Error: `title` does not exist */}
+                <CardTitle className="text-white">{skill.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-white/50">
-                  {skill.descripton} {/* Typo in `description` */}
+                  {skill.descripton}
                 </CardDescription>
               </CardContent>
             </Card>
@@ -35,15 +35,15 @@ export const SkillsSection: React.FC = () => {
           <div className="flex flex-col gap-4">
             <div>
               <h4 className="text-blue-300">Databases</h4>
-              <p className="text-white">Redis, Mongo, SQL, </p> {/* Extra comma */}
+              <p className="text-white">Redis, Mongo, SQL, </p> 
             </div>
             <div>
               <h4 className="text-blue-300">Backend</h4>
-              <p className="text-white">Python RabbitMQ Spring Hibernate</p> {/* No commas */}
+              <p className="text-white">Python RabbitMQ Spring Hibernate</p> 
             </div>
             <div>
               <h4 className="text-blue-300">Testing</h4>
-              <p className="text-white">Uniting, Assertions</p> {/* Wrong terms */}
+              <p className="text-white">Uniting, Assertions</p> 
             </div>
           </div>
         </div>
