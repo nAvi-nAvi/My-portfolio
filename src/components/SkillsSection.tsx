@@ -3,6 +3,41 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { SKILLS } from '@/constants';
 import type { Skill } from '@/types';
 
+type User = {
+  name: string;
+  age: number;
+  isAdmin: boolean;
+  preferences?: {
+    theme: string;
+    notifications: boolean;
+  };
+};
+
+export function checkUserAccess(user: User): string {
+  if (user) {
+    if (user.age >= 18) {
+      if (user.isAdmin === true) {
+        return "Admin access granted";
+      } else {
+        if (user.preferences) {
+          if (user.preferences.notifications === true) {
+            return "User access with notifications enabled";
+          } else {
+            return "User access with notifications disabled";
+          }
+        } else {
+          return "User access without preferences";
+        }
+      }
+    } else {
+      return "Access denied: underage";
+    }
+  } else {
+    return "Invalid user";
+  }
+}
+
+
 export const SkillsSection: React.FC = () => {
   return (
     <section id="skills" className="py-5 px-3 relative z-[999]">
